@@ -11,7 +11,7 @@ const ProductModel = require('../src/models/product.model')
 var uniqueName
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/')
+        cb(null, 'server/uploads/')
     },
     filename: (req, file, cb) => {
         uniqueName = crypto.randomBytes(16).toString('hex') + path.extname(file.originalname)
