@@ -14,7 +14,7 @@ This API is a back-end of the project https://github.com/lucas3K/PairPrograming
 ### List of Registered Products
 - Request Route: https://pair-programming-api.herokuapp.com/products/list/?key=XXXXXXXXXXXXXXXX
 - Request Method: **GET**
-- **Key**: Password to access the route and get the list of products
+- **Parameter Key**: Password to access the route and get the list of products
 
 ## Dependencies
 - dotenv
