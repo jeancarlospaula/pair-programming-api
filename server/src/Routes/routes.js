@@ -5,16 +5,25 @@ var cors = require('cors');
 const routes = express.Router()
 const upload = multer()
 
-const ProductModel = require('../models/product.model')
+const ProductModel = require('../models/product.model');
+const res = require('express/lib/response');
 
 routes.use(express.json());
 routes.use(cors({
     origin: '*'
 }));
 
+routes.get('/',(req,res)=>{
+    res.status(200).send('API Pair-Programming Active')
+})
 
-routes.post('/products/register/upload', upload.none(), async (req,res)=>{
+
+routes.post('/products/register/upload/', upload.none(), async (req,res)=>{
     try {
+        if(req.query.key !== process.env.PRODUCTS_LIST_RESULT_KEY){
+            return res.status(403).send("You haven't permission to access this route")
+        }
+
         const formData = JSON.parse(JSON.stringify(req.body))
 
         await ProductModel.create({
@@ -43,8 +52,15 @@ routes.get('/products/list/',async (req,res)=>{
             return res.status(403).send("You haven't permission to access this route")
         }
 
-        const products = await ProductModel.find({})
-        res.status(200).json(products) 
+        let products
+        if(req.query.product_id === undefined){
+            products = await ProductModel.find({})
+            res.status(200).json(products) 
+        }else{
+            products = await ProductModel.find({"_id": req.query.product_id})
+            res.status(200).json(products) 
+        }
+
     } catch (error) {
         res.status(500).send(error.message)
     }
