@@ -8,12 +8,10 @@ const upload = multer()
 const ProductModel = require('../models/product.model')
 
 routes.use(express.json());
-routes.use(cors());
+routes.use(cors({
+    origin: '*'
+}));
 
-routes.use((req, res, next)=>{
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    next()
-})
 
 routes.post('/products/register/upload', upload.none(), async (req,res)=>{
     try {
