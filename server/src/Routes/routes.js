@@ -1,5 +1,6 @@
 const express = require('express')
 const multer = require('multer')
+var cors = require('cors');
 
 const routes = express.Router()
 const upload = multer()
@@ -7,6 +8,7 @@ const upload = multer()
 const ProductModel = require('../models/product.model')
 
 routes.use(express.json());
+routes.use(cors({origin: '*'}));
 
 routes.post('/products/register/upload', upload.none(), async (req,res)=>{
     try {
