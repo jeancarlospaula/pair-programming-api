@@ -1,6 +1,6 @@
 # Pair Programmer API Server
 
-This API is a back-end of the project https://github.com/lucas3K/PairPrograming
+This API is the back-end of the project https://github.com/lucas3K/PairPrograming
 
 ## Documentation
 
