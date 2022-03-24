@@ -2,6 +2,7 @@ const ProductModel = require('../models/product.model')
 
 class PessoaController {
     static async insertProduct(req, res){
+        console.log(req.file)
         try {
             if(req.query.key !== process.env.PRODUCTS_LIST_RESULT_KEY){
                 return res.status(403).send("You haven't permission to access this route")
