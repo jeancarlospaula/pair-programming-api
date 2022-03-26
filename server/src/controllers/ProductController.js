@@ -15,11 +15,11 @@ class PessoaController {
                 product_author: formData.product_author,
                 product_image: req.file.firebaseUrl,
                 product_description: formData.product_description,
-                select_category:formData.select_category,
-                select_type: formData.select_type,
-                product_price: formData.product_price,
-                product_quantity: formData.product_quantity,
-                product_pages: formData.product_pages,
+                select_category:Number(formData.select_category),
+                select_type: Number(formData.select_type),
+                product_price: Number(formData.product_price),
+                product_quantity: Number(formData.product_quantity),
+                product_pages: Number(formData.product_pages),
                 create_date: Date.now()
             })
     
