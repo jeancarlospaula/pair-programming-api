@@ -4,7 +4,7 @@ const crypto = require('crypto')
 
 const bucketURL = process.env.FIREBASE_BUCKET_URL
 
-const firebase_private_key = process.env.FIREBASE_PRIVATE_KEY.replace(/\n/g, '\n')
+const firebase_private_key = process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
 console.log(firebase_private_key)
 
 admin.initializeApp({
