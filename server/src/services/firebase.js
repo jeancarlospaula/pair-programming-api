@@ -4,11 +4,14 @@ const crypto = require('crypto')
 
 const bucketURL = process.env.FIREBASE_BUCKET_URL
 
+const firebase_private_key = process.env.FIREBASE_PRIVATE_KEY.replace(/\n/g, '\n')
+console.log(firebase_private_key)
+
 admin.initializeApp({
   credential: admin.credential.cert({
     projectId: process.env.FIREBASE_PROJECT_ID,
     clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-    privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\n/g, '\n'),
+    privateKey: firebase_private_key
   }),
   storageBucket: bucketURL
 });
